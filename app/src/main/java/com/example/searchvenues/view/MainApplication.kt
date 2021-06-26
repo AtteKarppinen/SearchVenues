@@ -1,4 +1,4 @@
-package com.example.searchvenues
+package com.example.searchvenues.view
 
 import android.app.Application
 import android.util.Log
