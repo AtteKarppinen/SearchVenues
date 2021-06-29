@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SearchVenues</string>
+    <string name="list_item_distance">Distance: %1$s meters</string>
+    <string name="list_item_address">Address: %1$s</string>
+    <string name="list_item_name_hint">A Venue Name Hint</string>
+    <string name="edit_text_hint">Search venues near you!</string>
+    <string name="location_permission_rationale">The app requires location permission for the search function to work.</string>
+    <string name="snackbar_action">Allow</string>
 </resources>

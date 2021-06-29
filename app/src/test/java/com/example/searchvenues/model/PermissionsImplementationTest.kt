@@ -1,32 +1,30 @@
 package com.example.searchvenues.model
 
-import android.app.Activity
+import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.content.ContextCompat
-import io.mockk.every
-import io.mockk.mockkStatic
-import io.mockk.unmockkAll
-import io.mockk.verify
+import com.example.searchvenues.interfaces.Permissions
+import io.mockk.*
 import org.junit.After
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
-
+/**
+ * Unit tests for [PermissionsImplementation]
+ */
 class PermissionsImplementationTest {
 
     private lateinit var permissions: PermissionsImplementation
+    private lateinit var context: Context
 
     @Before
     fun setUp() {
         mockkStatic(ContextCompat::class)
         mockkStatic(PackageManager::class)
-        mockkStatic(Activity::class)
-        mockkStatic(Log::class)
+        context = mockk(relaxed = true)
 
-        permissions = PermissionsImplementation()
+        permissions = PermissionsImplementation(context)
     }
 
     @After
@@ -35,46 +33,16 @@ class PermissionsImplementationTest {
     }
 
     @Test
-    fun testGetLocationPermission() {
+    fun testCheckLocationPermissionState() {
         // Given
+        every { ContextCompat.checkSelfPermission(any(), any()) } returns 1
+
         // When
-        permissions.getLocationPermission()
+        permissions.checkPermissionState(Permissions.Permission.LOCATION_PERMISSION)
 
         // Then
         verify(exactly = 1) {
-            Activity().requestPermissions(any(), any())
+            ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
         }
-    }
-
-    @Test
-    fun testHasLocationPermissionReturnTrue() {
-        // Given
-        every { ContextCompat.checkSelfPermission(any(), any()) } returns
-                PackageManager.PERMISSION_GRANTED
-
-        // When
-        val result = permissions.hasLocationPermission()
-
-        // Then
-        verify(exactly = 1) {
-            ContextCompat.checkSelfPermission(any(), any())
-        }
-        assertTrue(result)
-    }
-
-    @Test
-    fun testHasLocationPermissionReturnFalse() {
-        // Given
-        every { ContextCompat.checkSelfPermission(any(), any()) } returns
-                PackageManager.PERMISSION_DENIED
-
-        // When
-        val result = permissions.hasLocationPermission()
-
-        // Then
-        verify(exactly = 1) {
-            ContextCompat.checkSelfPermission(any(), any())
-        }
-        assertFalse(result)
     }
 }

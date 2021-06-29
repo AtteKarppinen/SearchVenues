@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/venue_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/list_item_name_hint"
+        android:padding="@dimen/list_item_padding" />
+
+    <TextView
+        android:id="@+id/formatted_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/list_item_address"
+        android:padding="@dimen/list_item_padding" />
+
+    <TextView
+        android:id="@+id/venue_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/list_item_distance"
+        android:padding="@dimen/list_item_padding" />
+</LinearLayout>

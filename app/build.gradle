@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -14,6 +15,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_ACCESS_POINT", api_access_point
+        buildConfigField "String", "API_VERSIONING_DATE", api_versioning_date
     }
 
     buildTypes {
@@ -48,6 +52,14 @@ dependencies {
     testImplementation "io.insert-koin:koin-test:$koin_version"
     // Koin for Android
     implementation "io.insert-koin:koin-android:$koin_version"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    // GSON
+    implementation "com.google.code.gson:gson:$gson_version"
+    // Location
+    implementation "com.google.android.gms:play-services-location:$location_version"
     // Mockk
     testImplementation "io.mockk:mockk:$mock_version"
+    // Espresso
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }

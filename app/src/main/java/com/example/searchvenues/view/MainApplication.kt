@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import com.example.searchvenues.di.koinModules
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 
 /**
@@ -22,7 +21,6 @@ class MainApplication : Application() {
 
         startKoin {
             androidContext(this@MainApplication)
-            fragmentFactory()
             modules(koinModules)
         }
 
