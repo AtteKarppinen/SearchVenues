@@ -81,6 +81,11 @@ interface Contract {
         fun attachView(view: View)
 
         /**
+         * Update last known location
+         */
+        fun updateLastKnownLocation()
+
+        /**
          * Cleaning
          */
         fun onDestroy()

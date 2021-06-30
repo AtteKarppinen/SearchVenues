@@ -144,6 +144,7 @@ class MainActivity : AppCompatActivity(), Contract.View {
             } else {
                 // Permission granted
                 unlockUI()
+                mainPresenter.updateLastKnownLocation()
             }
         }
     }

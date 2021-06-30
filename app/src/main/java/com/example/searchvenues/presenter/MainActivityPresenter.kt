@@ -53,6 +53,12 @@ class MainActivityPresenter(
                     Log.e(LOG_TAG, "Error message: ${result.exception.message}")
                 }
             }
+            updateLastKnownLocation()
+        }
+    }
+
+    override fun updateLastKnownLocation() {
+        GlobalScope.launch {
             mainInteractor.updateLatLongData()
         }
     }

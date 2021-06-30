@@ -47,11 +47,11 @@ class MainActivityPresenterTest {
         // Then
         coVerify(exactly = 1) {
             mainInteractor.getLocationPermissionState()
-            mainInteractor.updateLatLongData()
         }
         verify(exactly = 1) {
             mockView.lockUI()
             mockView.requestLocationPermission()
+            mainActivityPresenter.updateLastKnownLocation()
         }
     }
 
@@ -97,6 +97,16 @@ class MainActivityPresenterTest {
 
         verify(exactly = 1) {
             mockView.emptySearchResults()
+        }
+    }
+
+    @Test
+    fun testUpdateLastKnownLocation() {
+        // When
+        mainActivityPresenter.updateLastKnownLocation()
+
+        coVerify(exactly = 1) {
+            mainInteractor.updateLatLongData()
         }
     }
 }

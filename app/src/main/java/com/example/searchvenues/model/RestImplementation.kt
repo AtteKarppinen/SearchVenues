@@ -34,6 +34,9 @@ class RestImplementation : REST {
         } catch (e: JSONException) {
             assert(false) { "${e.message}"}
             Log.e(LOG_TAG, "Error: ${e.message}")
+        } catch (e: Exception) {
+            assert(false) { "${e.message}" }
+            Log.e(LOG_TAG, "Error: ${e.message}")
         }
 
         return venues
